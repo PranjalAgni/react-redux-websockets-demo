@@ -6,7 +6,7 @@ const winston = require('winston');
 const cors = require('cors');
 const logger = require('./lib/logger');
 const apiRouter = require('./apiRouter');
-
+const factsWebSocket = require('./lib/factsWebSocket');
 const app = express();
 
 app.use(helmet());
@@ -19,6 +19,9 @@ app.use(logger.sendResponse);
 
 const PORT = 4040;
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   winston.info(`API running at http://localhost:${PORT}`);
 });
+
+factsWebSocket.init(server);
+setInterval(factsWebSocket.send, 4000);

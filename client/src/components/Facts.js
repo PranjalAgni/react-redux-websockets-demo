@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from 'react-jss';
 import { requestStart } from '../actions/base';
+import socketIOClient from 'socket.io-client';
 
 const styles = {
   root: {
@@ -18,8 +19,17 @@ class Facts extends Component {
     super(props);
 
     this.state = {
-      facts: props.facts
+      facts: props.facts,
+      endpoint: 'ws://localhost:4040'
     };
+  }
+
+  componentDidMount() {
+    const endpoint = this.state.endpoint;
+    const socket = socketIOClient(endpoint);
+    socket.on('random', data => {
+      console.log('Hey check this: ', data);
+    });
   }
 
   render() {
