@@ -1,6 +1,8 @@
+import Constant from '../constants';
+
 export function requestStart(limit = 10) {
   return {
-    type: 'REQUEST_START',
+    type: Constant.REQUEST_START,
     data: {
       isRequesting: true
     },
@@ -9,16 +11,18 @@ export function requestStart(limit = 10) {
     }
   };
 }
-export function addFact(data) {
+export function addFact(fact) {
   return {
-    type: 'ADD_DATA',
-    data
+    type: Constant.ADD_DATA,
+    data: {
+      fact: fact
+    }
   };
 }
 
 export function requestDone() {
   return {
-    type: 'REQUEST_DONE',
+    type: Constant.REQUEST_DONE,
     data: {
       isRequesting: false
     }

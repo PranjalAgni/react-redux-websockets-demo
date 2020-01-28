@@ -32,9 +32,10 @@ class Button extends Component {
             className={classes.fButton}
             onClick={() => this.props.requestStart(5)}
           >
-            Fire Request
+            Fire Request Soon
           </button>
         )}
+        <h1>{this.props.isRequesting}</h1>
         <Facts />
       </div>
     );
@@ -49,8 +50,5 @@ const mapDispatchToProps = {
   requestStart
 };
 export default withStyles(styles)(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Button)
+  connect(mapStateToProps, mapDispatchToProps)(Button)
 );

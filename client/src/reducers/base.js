@@ -1,28 +1,45 @@
+import Constant from '../constants';
+import { createReducers } from '../utils';
 const baseReducerState = {
   isRequesting: false,
   facts: []
 };
-export default (state = baseReducerState, action) => {
+
+const reducer = (state = baseReducerState, action) => {
   switch (action.type) {
-    case 'REQUEST_START':
+    case Constant.REQUEST_START:
       return {
         ...state,
         ...action.data
       };
-    case 'REQUEST_DONE':
+    case Constant.REQUEST_DONE:
       return {
         ...state,
         ...action.data
       };
-    case 'ADD_DATA':
-      let oldFacts = state.facts;
-      oldFacts.push(...action.data);
-      //const newFacts = oldFacts.concat(action.data);
-      return {
-        ...state,
-        facts: oldFacts
-      };
+    case Constant.ADD_DATA:
+      const newFacts = [...state.facts, ...action.data.fact];
+      return Object.assign(state, {
+        facts: newFacts
+      });
     default:
       return state;
   }
 };
+// export default createReducers(baseReducerState, {
+//   [Constant.REQUEST_START]: (state, action) => {
+//     return Object.assign(state, action.data);
+//   },
+//   [Constant.REQUEST_DONE]: (state, action) => {
+//     return Object.assign(state, action.data);
+//   },
+//   [Constant.ADD_DATA]: (state, action) => {
+//     const newFacts = [...state.facts, ...action.data.fact];
+//     return Object.assign(state, {
+//       facts: action.data.fact,
+//       done: true
+//     });
+//   }
+// });
+
+export default reducer;
