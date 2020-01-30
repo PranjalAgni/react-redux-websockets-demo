@@ -1,4 +1,5 @@
 const SearchService = require('../services/search/search');
+const winston = require('winston');
 
 class SearchRoute {
   constructor(router) {
@@ -11,7 +12,9 @@ class SearchRoute {
   }
 
   getSearchItem(req, res, next) {
-    SearchService.getGifs(req.body.search)
+    const { search } = req.body.data;
+    winston.info('Giphy searched: ', search);
+    SearchService.getGifs(search)
       .then(result => res.json(result))
       .catch(next);
   }
