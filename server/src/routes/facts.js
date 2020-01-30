@@ -1,5 +1,4 @@
 const FactsService = require('../services/facts/facts');
-
 class FactsRoute {
   constructor(router) {
     this.router = router;
@@ -12,7 +11,7 @@ class FactsRoute {
 
   getFacts(req, res, next) {
     FactsService.getFacts()
-      .then((result) => res.json(result))
+      .then(result => res.json(result))
       .catch(next);
   }
 }

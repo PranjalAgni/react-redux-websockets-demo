@@ -10,8 +10,8 @@ const factsWebSocket = require('./lib/factsWebSocket');
 
 const app = express();
 
-// app.use(helmet());
-// app.use(responseTime());
+app.use(helmet());
+app.use(responseTime());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());

@@ -9,7 +9,7 @@ module.exports = {
   },
   externals: {
     config: JSON.stringify({
-      url: 'http://localhost:4040/api/v1/facts'
+      url: 'http://localhost:4040/api/v1'
     })
   },
   module: {
@@ -20,8 +20,9 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        loader: 'css-loader',
-        test: /\.css$/
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+        exclude: /[\/\\](node_modules|public\/)[\/\\]/
       }
     ]
   },

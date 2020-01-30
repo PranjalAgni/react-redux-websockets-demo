@@ -3,8 +3,8 @@
 [x] Shift Api call on Server
 [x] Implement web-socket on Node Server
 [x] Use a router(BrowserRouter)
-[] Make a route /find
-[] Page where we can search pictures by search term
+[x] Make a route /find
+[x] Page where we can search pictures by search term
 [] Save those terms for which we have search the pictures in Redux
 [] Fire request only when search term is not found in Redux
 [] Use redux-persist
