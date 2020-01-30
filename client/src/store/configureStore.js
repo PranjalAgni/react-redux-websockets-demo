@@ -12,7 +12,7 @@ export default () => {
         window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
       : compose;
 
-  const middlewareEnhancer = applyMiddleware(logger, sagaMiddleware);
+  const middlewareEnhancer = applyMiddleware(sagaMiddleware);
   const composedEnhancers = compose(middlewareEnhancer, devTools);
   const store = createStore(rootReducer, undefined, composedEnhancers);
 

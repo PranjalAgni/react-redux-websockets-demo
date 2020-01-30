@@ -5,10 +5,13 @@
 [x] Use a router(BrowserRouter)
 [x] Make a route /find
 [x] Page where we can search pictures by search term
-[] Save those terms for which we have search the pictures in Redux
-[] Fire request only when search term is not found in Redux
+[x] Save those terms for which we have search the pictures in Redux
+[x] Fire request only when search term is not found in Redux
 [] Use redux-persist
-[]
+
+[x] Create a selector
+[x] Return the images to show
+[] Create gif component
 
 [x] On NodeJS do API call after a random time and bring some new data
 [x] Emit data from Node app to React app
