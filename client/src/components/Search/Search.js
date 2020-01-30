@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
-import { serachRequestStart } from '../../actions/search';
 import { connect } from 'react-redux';
+import Loadable from 'react-loadable';
+import {
+  searchRequestStart,
+  updateSearchTerm,
+  serachRequestDone
+} from '../../actions/search';
+import { filterGifs } from '../../selectors/search';
+import './Search.css';
+
+const Gif = Loadable({
+  loader: () => import('../Gif/Gif'),
+  loading() {
+    return <h3>Loading...</h3>;
+  }
+});
+
 class Search extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      searchVal: ''
-    };
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onChangeSearchTerm = this.onChangeSearchTerm.bind(this);
@@ -14,40 +26,53 @@ class Search extends Component {
 
   onSubmit(event) {
     event.preventDefault();
-    console.log('Submit clicked....');
-    this.props.serachRequestStart(this.state.searchVal);
+    console.log('Submitted...', this.props.gifs);
+    if (!this.props.gifs.status) {
+      this.props.searchRequestStart(this.props.searchTerm);
+    }
   }
 
   onChangeSearchTerm(event) {
-    this.setState({
-      searchVal: event.target.value
-    });
+    this.props.updateSearchTerm(event.target.value);
   }
+
   render() {
-    const { loading } = this.props;
+    const { searchTerm, loading, gifs } = this.props;
     return (
-      <div>
+      <div className="root">
         <form>
           <input
             type="text"
             placeholder="Enter search term"
             onChange={this.onChangeSearchTerm}
-            value={this.state.searchVal}
+            value={searchTerm}
           />
           <button onClick={this.onSubmit}>Submit</button>
         </form>
-        {loading ? <h4>Searching......</h4> : null}
+        {loading && (
+          <img
+            className="spinner"
+            alt="loading"
+            src="https://media.giphy.com/media/3o7bu3XilJ5BOiSGic/giphy.gif"
+          />
+        )}
+
+        <Gif data={gifs} />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  loading: state.search.loading
+  loading: state.search.loading,
+  searchTerm: state.search.searchTerm,
+  gifs: filterGifs(state)
 });
 
 const mapDispatchToProps = {
-  serachRequestStart
+  searchRequestStart,
+  updateSearchTerm,
+  serachRequestDone
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

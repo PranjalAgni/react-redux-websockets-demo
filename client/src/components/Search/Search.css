@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.spinner {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  height: 100px;
+  width: 100px;
+}
