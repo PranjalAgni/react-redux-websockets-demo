@@ -13,7 +13,6 @@ class SearchRoute {
 
   getSearchItem(req, res, next) {
     const { search } = req.body.data;
-    winston.info('Giphy searched: ', search);
     SearchService.getGifs(search)
       .then(result => res.json(result))
       .catch(next);

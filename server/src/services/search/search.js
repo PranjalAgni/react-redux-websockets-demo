@@ -2,7 +2,6 @@ const axios = require('axios');
 
 class SearchService {
   async getGifs(search) {
-    console.log('(((((((', search);
     //https://api.giphy.com/v1/gifs/search?api_key=0S0a34W71hTneFExH0AHGUn0Uj99Le3Y&q=butterfly&limit=10
     const API_KEY = '0S0a34W71hTneFExH0AHGUn0Uj99Le3Y';
     const limit = 20;
@@ -12,7 +11,7 @@ class SearchService {
     );
 
     const resultGifStore = response.data.data.map(gif => {
-      return gif.images.fixed_height.url;
+      return gif.images.fixed_height_small.url;
     });
 
     return {
