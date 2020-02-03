@@ -14,12 +14,10 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/server
-
     steps:
       - checkout
 
-      - run: npm install
+      - run: cd server && npm install
 
       # run print!
-      - run: npm run print
+      - run: cd server && npm run print
