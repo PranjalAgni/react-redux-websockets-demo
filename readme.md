@@ -1,8 +1,10 @@
 ## React + Redux + Web Sockets
 
 ---
-![CI](https://github.com/PranjalAgni/react-redux-websockets-demo/workflows/CI/badge.svg?event=push)
 
+![GithubCI-Server](https://github.com/PranjalAgni/react-redux-websockets-demo/workflows/CI/badge.svg?event=push)
+
+[![CircleCI-Server](https://circleci.com/gh/PranjalAgni/react-redux-websockets-demo.svg?style=svg)](https://circleci.com/gh/PranjalAgni/react-redux-websockets-demo)
 
 This repo shows how to integrate React ✨ with NodeJS ✨ over a socket connection 🚀.
 
