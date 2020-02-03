@@ -1,6 +1,8 @@
 ## React + Redux + Web Sockets
 
 ---
+![Greet Everyone](https://github.com/PranjalAgni/react-redux-websockets-demo/workflows/Greet%20Everyone/badge.svg?branch=master)
+
 
 This repo shows how to integrate React ✨ with NodeJS ✨ over a socket connection 🚀.
 
