@@ -1,8 +1,11 @@
 name: Greet Everyone
 
-on: [push]
-paths:
-  - 'server/*'
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'server/*'
 
 jobs:
   build:
