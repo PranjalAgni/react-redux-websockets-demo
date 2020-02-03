@@ -1,15 +1,22 @@
-name: Greet Everyone
-
+name: CI
 on: [push]
+
 jobs:
   build:
-    name: Greeting
-    runs-on: ubuntu-latest
+    name: Build
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node_version: [10, 12]
+
     steps:
-      - name: Hello World
-        uses: actions/hello-world-javascript-action@v1
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node_version }}
+        uses: actions/setup-node@v1
         with:
-          who-to-greet: 'Pranjal Agnihotri'
-        id: hello
-      - name: Log greeting time
-        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
+          version: ${{ matrix.node_version }}
+      - name: Checker
+        working-directory: server
+        run: |
+          npm run install
+          npm run print
