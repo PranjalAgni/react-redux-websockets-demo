@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon src/app.js",
     "start": "node src/app.js",
-    "print": "echo This is fun"
+    "print": "echo This is fun great"
   },
   "keywords": [],
   "author": "",
