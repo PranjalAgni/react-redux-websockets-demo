@@ -27,7 +27,7 @@ workflows:
   push-workflow:
     triggers:
       - schedule:
-          cron: '0 1 * * * ?'
+          cron: '0 * * * *'
           filters:
             branches:
               only:
