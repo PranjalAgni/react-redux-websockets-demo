@@ -15,7 +15,7 @@ jobs:
       - run: cd server && npm install
 
       # run print!
-      - run: cd server && npm run print
+      - run: cd server && npm run test
 
 workflows:
   version: 2
