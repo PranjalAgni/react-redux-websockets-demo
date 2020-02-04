@@ -21,12 +21,10 @@ jobs:
 
       # run print!
       - run: cd server && npm run print
+
 workflows:
   version: 2
   build_and_test:
-    jobs:
-      - build
-  nightly:
     triggers:
       - schedule:
           cron: '0 0 5 * * ?'
@@ -34,3 +32,5 @@ workflows:
             branches:
               only:
                 - master
+    jobs:
+      - build
