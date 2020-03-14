@@ -3,6 +3,7 @@ const app = require('../src/app');
 
 describe('Facts Endpoint', () => {
   it('should returns fact array', async done => {
+    jest.setTimeout(30000);
     const res = await request(app)
       .get('/api/v1/facts')
       .send();
