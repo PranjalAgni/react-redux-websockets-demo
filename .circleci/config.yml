@@ -22,7 +22,7 @@ workflows:
   hourly-workflow:
     triggers:
       - schedule:
-          cron: '6 */6 * * *'
+          cron: '30 5 * * *'
           filters:
             branches:
               only:
