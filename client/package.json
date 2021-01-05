@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "config": "^3.2.2",
     "nowcloudv2": "^1.1.5",
     "react": "^16.9.0",
